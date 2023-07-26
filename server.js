@@ -1,7 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/db";
+const cookieParser = require('cookie-parser');
 import { errorResponserHandler,invalidPathHandler } from "./middleware/errorHandler";
+
 
 const jwt= require('jsonwebtoken')
 
@@ -12,6 +14,9 @@ dotenv.config();
 connectDB()
 const app =express();
 app.use(express.json());
+
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 app.get('/',(req,res) => {
     res.send("server is running...")
