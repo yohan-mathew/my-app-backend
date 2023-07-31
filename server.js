@@ -4,8 +4,12 @@ import connectDB from "./config/db";
 const cookieParser = require('cookie-parser');
 import { errorResponserHandler,invalidPathHandler } from "./middleware/errorHandler";
 
+const path = require('path')
+
 
 const jwt= require('jsonwebtoken')
+
+
 
 // Routes
 import userRoute from "./routes/userRoutes";
@@ -14,6 +18,8 @@ dotenv.config();
 connectDB()
 const app =express();
 app.use(express.json());
+
+app.use(express.static(path.join(__dirname+"/public")))
 
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -24,8 +30,6 @@ app.get('/',(req,res) => {
 
 
 app.use('/api/users', userRoute)
-
-app.use(invalidPathHandler);
 
 app.use(errorResponserHandler);
 
