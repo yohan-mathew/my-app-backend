@@ -7,14 +7,11 @@ export const adminlog = async (req, res, next) => {
 
         //bad request (user not authorized)
         if (email != process.env.NAME || password != process.env.PASSWORD){
-            console.log(email)
-            console.log(password)
             throw new Error("user not authorized")
         }
 
         
         res.cookie('loggedIn', true);
-
         res.send("welcome suzi")
         
     }

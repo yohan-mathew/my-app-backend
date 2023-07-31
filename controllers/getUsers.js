@@ -4,7 +4,6 @@ import User from "../models/user";
     try{
         const query = User.find({}); // Create the query
         const users = await query.exec(); // Execute the query
-        console.log(users);
         const names = users.map((user) => ({name:user.name, barber:user.barber, time:user.createdAt, id: user._id}));
         res.json(names)
     }
