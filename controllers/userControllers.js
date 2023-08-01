@@ -1,5 +1,6 @@
 import User from "../models/user";
 
+
 export const registerUser = async (req, res, next) => {
     try{
         const {name, barber} = req.body;
@@ -19,6 +20,7 @@ export const registerUser = async (req, res, next) => {
             name,
             barber
         });
+
 
         return res.status(201).json({
             _id:user.id,

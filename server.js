@@ -9,8 +9,6 @@ const path = require('path')
 
 const jwt= require('jsonwebtoken')
 
-
-
 // Routes
 import userRoute from "./routes/userRoutes";
 
@@ -27,7 +25,6 @@ app.use(cookieParser());
 app.get('/',(req,res) => {
     res.send("server is running...")
 });
-
 
 app.use('/api/users', userRoute)
 
