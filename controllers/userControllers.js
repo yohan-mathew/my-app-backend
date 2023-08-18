@@ -2,6 +2,8 @@ import User from "../models/user";
 
 
 export const registerUser = async (req, res, next) => {
+    
+
     try{
         const {name, barber, service} = req.body;
 
