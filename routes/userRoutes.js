@@ -13,6 +13,6 @@ router.post('/login', adminlog);
 router.get('/reserve', userInfo)
 router.post('/dashboard' , adminDashboard)
 router.delete('/dashboard/:objectId', deleteUserReservation)
-router.post('/dashboard/:objectId',hairdresserInfo )
+router.post('/dashboard/:name',hairdresserInfo )
 export default router;
 
