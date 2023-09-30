@@ -5,7 +5,7 @@ export const registerUser = async (req, res, next) => {
     
 
     try{
-        const {name, barber, service} = req.body;
+        const {name, barber, arrivalTime, service} = req.body;
 
         //checks if the user is already in line
         let user = await User.findOne({name,barber})
@@ -21,6 +21,7 @@ export const registerUser = async (req, res, next) => {
         user = await User.create({
             name,
             barber,
+            arrivalTime,
             service
         });
 
@@ -28,6 +29,7 @@ export const registerUser = async (req, res, next) => {
             _id:user.id,
             name: user.name,
             barber: user.barber,
+            arrivalTime: user.arrivalTime,
             service:user.service,
             time: user.createdAt
         })
