@@ -1,16 +1,19 @@
-import User from "../models/user";
+import User from "../models/user.js"; // Add .js if using ES modules
 
-export const deleteUserReservation = async (req, res) => {
-   try{
+const deleteUserReservation = async (req, res, next) => {
+  try {
     const { objectId } = req.params;
 
-    const query = User.findByIdAndDelete(objectId) // Create the query
-    await query.exec();
-    
-   }
-   catch(error) {
-    next(error)
-}
-  };
+    const user = await User.findByIdAndDelete(objectId);
 
-  export {deleteUserReservation};
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    return res.status(204).send(); // Success - No Content
+  } catch (error) {
+    next(error);
+  }
+};
+
+export { deleteUserReservation };
