@@ -20,5 +20,6 @@
     "mongoose": "^6.11.4",
     "nodemon": "^3.0.1",
     "socket.io": "^4.7.1"
-  }
+  },
+  "proxy": "http://localhost:5000"
 }
